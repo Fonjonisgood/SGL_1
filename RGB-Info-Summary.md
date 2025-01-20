@@ -76,10 +76,10 @@ This lets you set a specific value for the interupt for both bytes so you can ge
 ## Status Flag Register
 Address: **0x08**
 default: **0x04**
-Current configuration **0x04**
+Current configuration **0x00**
 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 |---|---|---|---|---|---|---|---|
-| 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 |
+| 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 ### RGBTHF [0]
 This bit is the status of the interupt. When a interupt is triggered the logic is set to high. It gets reset to low when the interupt is cleared. For our purposes we will use the default of 0
