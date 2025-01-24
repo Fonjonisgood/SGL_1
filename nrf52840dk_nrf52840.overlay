@@ -10,18 +10,51 @@
 
 // For more help, browse the DeviceTree documentation at https://docs.zephyrproject.org/latest/guides/dts/index.html
 // You can also visit the nRF DeviceTree extension documentation at https://docs.nordicsemi.com/bundle/nrf-connect-vscode/page/guides/ncs_configure_app.html#devicetree-support-in-the-extension
-&i2c0{
+&i2c0 {
     RGBsensor: ISL29125@44 { 
       compatible = "i2c-device";
       reg = <0x44>; 
       status = "okay";
     };
+
+ 
+  
+};
+&spi1 { status = "disabled";};
+&spi0 { status = "disabled";};
+&i2c1 { status = "disabled";};
+/{
+
+  leds{
+led5: int{
+  gpios = <&gpio0 4 (GPIO_ACTIVE_HIGH)>;
 };
 
-/{
+led6: red1{
+  gpios = <&gpio0 31 (GPIO_ACTIVE_HIGH)>;
+};
+
+led7: green1{
+  gpios = <&gpio0 30 (GPIO_ACTIVE_HIGH)>;
+};
+
+led8: blue1{
+  gpios = <&gpio0 29 (GPIO_ACTIVE_HIGH)>;
+};
+
+};
+
     buttons{
-   pb: button_4 {
-    gpios = <&gpio0 3 (GPIO_ACTIVE_HIGH)>; 
+   pb1: button_4 {
+    gpios = <&gpio0 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; 
    };
 };
+
+aliases{
+  turnon = &led5;
+  pb = &pb1;
+  red = &led6;
+  green = &led7;
+  blue = &led8;
+}; 
 };
